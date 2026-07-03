@@ -1,0 +1,23 @@
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+
+# Variable files that may contain secrets (keep terraform.tfvars for the sample)
+*.auto.tfvars
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Realised backend config (kept as backend.tf.example)
+backend.tf
+
+# CLI config / plan output
+.terraformrc
+terraform.rc
+*.tfplan
+
+# Lock files for provider hashes are fine to commit; keep .terraform.lock.hcl tracked
