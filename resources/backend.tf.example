@@ -1,0 +1,21 @@
+# Remote state backend (GCS) — OPTIONAL.
+#
+# By default this config uses LOCAL state, so anyone can `terraform init` and
+# `terraform plan` without extra infrastructure. For team/CI use, store state
+# remotely in a GCS bucket (remote state + state locking).
+#
+# The state bucket must exist BEFORE `terraform init` — Terraform cannot create
+# the bucket that holds its own state. Backend blocks also cannot use variables,
+# so the bucket name has to be a literal.
+#
+# To enable:
+#   1. Create the bucket (see "Remote state (GCS backend)" in the README).
+#   2. Copy this file to backend.tf and set your real bucket name.
+#   3. Run `terraform init` (Terraform will offer to migrate local state).
+
+terraform {
+  backend "gcs" {
+    bucket = "CHANGE-ME-tf-state-bucket" # globally-unique GCS bucket you own
+    prefix = "gcp-maps-api-keys"         # object path prefix for this config's state
+  }
+}
